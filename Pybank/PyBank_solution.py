@@ -1,5 +1,6 @@
 import os
 import csv
+import sys
 
 budget_data = os.path.join("..","PyBank","budget_data.csv")
 
@@ -53,13 +54,14 @@ print("Greatest Increase in Profits: ",largest_increase_row[0], "${:,.0f}".forma
 print("Greatest Decrease in Profits: ",largest_decrease_row[0], "(${:,.0f})".format(int(largest_decrease_row[1])))
 
 budget_data_results = os.path.join("..","PyBank","budget_data_results.csv")
-with open(budget_data_results,'w') as csvfile:
-    csvwriter = csv.writer(csvfile, delimiter=',') as csvfile:
-    csvwriter.writerow("Financial Analysis")
-    csvwriter.writerow("-------------------------")
-    csvwriter.writerow("Total Months: ",total_months)
-    csvwriter.writerow("Total: ","${:,.0f}".format(total_pl)
-    csvwriter.writerow("Average Change: ","${:,.2f}".format(average_change))
-    csvwriter.writerow("Greatest Increase in Profits: ",largest_increase_row[0], "${:,.0f}".format(int(largest_increase_row[1])))
-    csvwriter.writerow("Greatest Decrease in Profits: ",largest_decrease_row[0], "(${:,.0f})".format(int(largest_decrease_row[1])))
+
+with open(budget_data_results,'w', newline='') as csvfile:
+    csvwriter = csv.writer(csvfile, delimiter=',')
+    csvwriter.writerow(["Financial Analysis"])
+    csvwriter.writerow(["-------------------------"])
+    csvwriter.writerow(["Total Months: ",total_months])
+    csvwriter.writerow(["Total: ","${:,.0f}".format(total_pl)])
+    csvwriter.writerow(["Average Change: ","${:,.2f}".format(average_change)])
+    csvwriter.writerow(["Greatest Increase in Profits: ",largest_increase_row[0], "${:,.0f}".format(int(largest_increase_row[1]))])
+    csvwriter.writerow(["Greatest Decrease in Profits: ",largest_decrease_row[0], "(${:,.0f})".format(int(largest_decrease_row[1]))])
 
